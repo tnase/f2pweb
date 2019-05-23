@@ -1,0 +1,13 @@
+<p>
+  list-post works!
+</p>
+
+<form [formGroup]="pictureForm" class="custom-file" (ngSubmit)="onSubmit()"  >
+    <input type="file" class="custom-file-input" id="customFileLang" (change)="onFieldSelected($event.target.files)" formControlName="picture">
+    <label class="custom-file-label" for="customFileLang">Choose Picture</label>
+
+
+  <img [src]="imgUrl" height="200" *ngIf="imgUrl" style="margin:4%">
+  <br/><br/><br/>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
