@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ListPostComponent implements OnInit {
   public imagePath;
   imgUrl:any;
+  loading:any ;
   pictureForm=new FormGroup({
     picture:new FormControl()
   })
@@ -30,9 +31,9 @@ export class ListPostComponent implements OnInit {
     reader.onload = (_event) => {
     this.imgUrl = reader.result;
     }
-      console.log(this.imgUrl);
 
-    this.verifyImage(files[0])
+    this.verifyImage(files[0]);
+
   }
 
   onSubmit(){
@@ -43,23 +44,24 @@ export class ListPostComponent implements OnInit {
   }
 
   verifyImage(file){
-    console.log(file)
+             this.loading=true;
             var data = new FormData();
             data.append('modelId', 'dc2307f6-714c-4ce6-9913-b23e11b398ca');
             data.append('file', file); // file is a Blob object
 
             var xhr = new XMLHttpRequest();
-
             xhr.addEventListener("readystatechange", function () {
               if (this.readyState === this.DONE) {
                 console.log(this.responseText);
               }
             });
-
             xhr.open("POST", "https://app.nanonets.com/api/v2/ImageCategorization/LabelFile/");
             xhr.setRequestHeader("authorization", "Basic " + btoa("cNICH5KFzrF6ofTSQCOjGYEsTs-pTAc-:"));
-
             xhr.send(data);
+
+
+
+
   }
 
 
