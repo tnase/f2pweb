@@ -43,10 +43,10 @@ export class ListPostComponent implements OnInit {
    this.makeRequest(files[0] , function (err, datums) {
      if (err) { throw err; }
      console.log("success  "+JSON.stringify(datums) );
-     let data=datums.result[0].prediction;
+     let  prediction=datums.result[0].prediction;
      let nsfw;
      let sfw ;
-     for(let d of data)
+     for(let d of prediction)
      {
        if(d.label==="nsfw")
         nsfw=d;
@@ -54,7 +54,7 @@ export class ListPostComponent implements OnInit {
      }
 
      if(sfw.probability<nsfw.probability){
-       alert("image porno")
+
      }
 
 
