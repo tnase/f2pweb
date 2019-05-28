@@ -14,7 +14,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ListPostComponent implements OnInit {
   public imagePath;
   imgUrl:any;
-  loading:any ;
+  loading:Boolean=false ;
+  isNsfw:Boolean =false;
   pictureForm=new FormGroup({
     picture:new FormControl()
   })
@@ -35,13 +36,11 @@ export class ListPostComponent implements OnInit {
     reader.readAsDataURL(files[0]);
     reader.onload = (_event) => {
     this.imgUrl = reader.result;
+    this.loading=true;
     }
 
-    // let a=this.verifyImage(files[0]);
-    // console.log("tona"+a);
-
-   this.makeRequest(files[0] , function (err, datums) {
-     if (err) { throw err; }
+  this.makeRequest(files[0] , function (err, datums) {
+          if (err) { throw err; }
      console.log("success  "+JSON.stringify(datums) );
      let  prediction=datums.result[0].prediction;
      let nsfw;
@@ -50,52 +49,29 @@ export class ListPostComponent implements OnInit {
      {
        if(d.label==="nsfw")
         nsfw=d;
-       else sfw=d
+       else sfw=d;
      }
-
      if(sfw.probability<nsfw.probability){
 
+         alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
      }
 
 
+  });
 
-    });
+
 
   }
-
 
   onSubmit(){
-
   this.imgUrl= this.pictureForm.value.picture ;
-
-
   }
 
-  verifyImage(file):any{
 
-
-             this.loading=true;
-            var data = new FormData();
-            data.append('modelId', 'dc2307f6-714c-4ce6-9913-b23e11b398ca');
-            data.append('file', file); // file is a Blob object
-
-            var xhr = new XMLHttpRequest();
-              xhr.addEventListener("readystatechange", function () {
-              if (this.readyState === this.DONE) {
-                console.log(this.responseText);
-              }
-            });
-
-            xhr.open("POST", "https://app.nanonets.com/api/v2/ImageCategorization/LabelFile/");
-            xhr.setRequestHeader("authorization", "Basic " + btoa("cNICH5KFzrF6ofTSQCOjGYEsTs-pTAc-:"));
-            xhr.send(data);
-
-  }
-
- makeRequest ( file,done) {
-  var data = new FormData();
-  data.append('modelId', 'dc2307f6-714c-4ce6-9913-b23e11b398ca');
-  data.append('file', file);
+ makeRequest (file,done) {
+    var data = new FormData();
+    data.append('modelId', 'dc2307f6-714c-4ce6-9913-b23e11b398ca');
+    data.append('file', file);
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     xhr.open("POST", "https://app.nanonets.com/api/v2/ImageCategorization/LabelFile/");
@@ -103,13 +79,13 @@ export class ListPostComponent implements OnInit {
     xhr.onload = function () {
       done(null, xhr.response);
     };
-    xhr.onerror = function () {
+    xhr.onerror =  function(){
       done(xhr.response);
     };
 
     xhr.setRequestHeader("authorization", "Basic " + btoa("cNICH5KFzrF6ofTSQCOjGYEsTs-pTAc-:"));
     xhr.send(data);
-    //xhr.send();
+
   }
 
 
