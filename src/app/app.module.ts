@@ -10,13 +10,15 @@ import { UserComponent } from './user/user.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { from } from 'rxjs';
 import { ListPostComponent } from './list-post/list-post.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     LoginFormComponent,
-    ListPostComponent
+    ListPostComponent,
+    CreateAccountComponent
   ],
   imports: [
     AlertModule.forRoot(),

@@ -1,3 +1,4 @@
+import { CreateAccountComponent } from './create-account/create-account.component';
 import { ListPostComponent } from './list-post/list-post.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { UserComponent } from './user/user.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'list-post',
     component: ListPostComponent
+  },
+  {
+    path: 'register',
+    component: CreateAccountComponent
   }
 
 ];

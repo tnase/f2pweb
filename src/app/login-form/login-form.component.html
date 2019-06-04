@@ -1,6 +1,6 @@
-<alert type="success" >hello</alert>
+<alert type="success" class="text-center" >F2P</alert>
 <div class="container">
-  <h1>Hero Form</h1>
+  <h1>Login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="login()"  >
 
     <div class="form-group"  >
@@ -12,8 +12,8 @@
       <label for="alterEgo" >Alter Ego</label>
       <input type="password" class="form-control" formControlName="password"  >
     </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
+    <label class="text-primary" style="margin-right:2% ;padding-top:5%;margin-left:70% ;" routerLink="/register" routerDirection="forward">Register</label>
+    <button type="submit" class="btn btn-success">Connect</button>
 
   </form>
 </div>
