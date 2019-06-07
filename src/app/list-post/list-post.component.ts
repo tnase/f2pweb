@@ -14,6 +14,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class ListPostComponent implements OnInit {
   public imagePath;
   imgUrl:any;
+  imgToSend:any;
   loading:Boolean=false ;
   isNsfw:Boolean =false;
   pictureForm=new FormGroup({
@@ -37,6 +38,7 @@ export class ListPostComponent implements OnInit {
     reader.onload = (_event) => {
     this.imgUrl = reader.result;
     this.loading=true;
+    this.imgToSend=files[0];
     }
 
   this.makeRequest(files[0] , function (err, datums) {
@@ -54,6 +56,8 @@ export class ListPostComponent implements OnInit {
      if(sfw.probability<nsfw.probability){
 
          alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
+     }else{
+       alert("cette image n'est pas sensible vous pouvez la poster")
      }
 
 
@@ -64,7 +68,7 @@ export class ListPostComponent implements OnInit {
   }
 
   onSubmit(){
-  this.imgUrl= this.pictureForm.value.picture ;
+  console.log("image for send"+this.imgToSend);
   }
 
 
