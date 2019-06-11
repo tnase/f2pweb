@@ -6,7 +6,8 @@ export const environment = {
   production: false
 };
 
-const url = 'http://10.20.107.6:7090/print/f2p/api/v1/';
+//const url = 'http://10.20.107.6:7090/print/f2p/api/v1/';
+const url = 'http://192.168.8.128:7090/print/f2p/api/v1/';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
