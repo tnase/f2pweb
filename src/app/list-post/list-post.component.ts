@@ -18,8 +18,11 @@ export class ListPostComponent implements OnInit {
   imgToSend:any;
   loading:Boolean=false ;
   isNsfw:Boolean =false;
-  pictureForm=new FormGroup({
-    picture:new FormControl()
+  pictureForm = new FormGroup({
+    title: new FormControl(),
+    description: new FormControl(),
+    picture: new FormControl(),
+
   })
   constructor(private _post_service : PostService) { }
 
