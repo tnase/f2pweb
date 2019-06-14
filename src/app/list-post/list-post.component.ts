@@ -70,9 +70,31 @@ export class ListPostComponent implements OnInit {
 
   onSubmit(){
 
+    this.makeRequest(this.imgToSend , function (err, datums) {
+      if (err) { throw err; }
+ console.log("success  "+JSON.stringify(datums) );
+ let  prediction=datums.result[0].prediction;
+ let nsfw;
+ let sfw ;
+ for(let d of prediction)
+ {
+   if(d.label==="nsfw")
+    nsfw=d;
+   else sfw=d;
+ }
+ if(sfw.probability<nsfw.probability){
+
+     alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
+ }else{
+   alert("cette image n'est pas sensible place au submit")
+ }
+
+
+});
+
      let formData=new FormData() ;
-     formData.append('image',this.imgToSend,this.imgToSend.name);
-     this._post_service.addPost(this.imgToSend)
+     formData.append('file',this.imgToSend,this.imgToSend.name);
+     this._post_service.addPost(formData)
            .subscribe(data=>{
              console.log("success");
            },error=>{
