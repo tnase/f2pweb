@@ -34,7 +34,7 @@ export class LoginFormComponent implements OnInit {
   login(){
     this.userService.login(this.loginForm.value.email,this.loginForm.value.password)
     .subscribe(data=>{
-           let user=this.loginForm.value.email.trim()+";"+this.loginForm.value.password.trim() ;
+           let user=this.loginForm.value.email+";"+this.loginForm.value.password.trim() ;
            alert(JSON.stringify(data))
            if(data===true){
               this.isLogin=true;

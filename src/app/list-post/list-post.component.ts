@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostService } from './../service/post.service';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,19 +16,28 @@ import { PostService } from './../service/post.service';
 export class ListPostComponent implements OnInit {
   public imagePath;
   imgUrl:any;
-  imgToSend:any;
-  loading:Boolean=false ;
-  isNsfw:Boolean =false;
+  email: String ;
+  imgToSend: any = null;
+  loading: Boolean = false ;
+  isNsfw: Boolean = false;
   pictureForm = new FormGroup({
     title: new FormControl(),
     description: new FormControl(),
     picture: new FormControl(),
 
   })
-  constructor(private _post_service : PostService) { }
+  constructor(private _post_service : PostService, private _route : ActivatedRoute) {
+    this.readEmailParameter();
+  }
 
   ngOnInit() {
 
+  }
+
+
+  readEmailParameter(){
+   this.email = this._route.snapshot.paramMap.get('user').split(";")[0] ;
+   console.log(this.email);
   }
 
 
@@ -72,10 +82,11 @@ export class ListPostComponent implements OnInit {
   }
 
   onSubmit(){
-
+    console.log(this.pictureForm.value.title);
+if(this.imgToSend!=null){
     this.makeRequest(this.imgToSend , function (err, datums) {
       if (err) { throw err; }
- console.log("success  "+JSON.stringify(datums) );
+    console.log("success  "+JSON.stringify(datums) );
  let  prediction=datums.result[0].prediction;
  let nsfw;
  let sfw ;
@@ -92,6 +103,9 @@ export class ListPostComponent implements OnInit {
    alert("cette image n'est pas sensible place au submit")
    let formData=new FormData() ;
    formData.append('file',this.imgToSend,this.imgToSend.name);
+   formData.append('title',this.pictureForm.value.title);
+   formData.append('description',this.pictureForm.value.description);
+   formData.append('email',this.pictureForm.value.description);
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
@@ -102,6 +116,20 @@ export class ListPostComponent implements OnInit {
 
 
 });
+return ;
+ }  else{
+  let formData=new FormData() ;
+   formData.append('file',null);
+   formData.append('title',this.pictureForm.value.title);
+   formData.append('description',this.pictureForm.value.description);
+   this._post_service.addPost(formData)
+         .subscribe(data=>{
+           console.log("success");
+         },error=>{
+           console.log(error);
+         })
+         return ;
+}
 
 
 
