@@ -42,27 +42,27 @@ export class ListPostComponent implements OnInit {
     this.imgToSend=files[0];
     }
 
-  this.makeRequest(files[0] , function (err, datums) {
-          if (err) { throw err; }
-     console.log("success  "+JSON.stringify(datums) );
-     let  prediction=datums.result[0].prediction;
-     let nsfw;
-     let sfw ;
-     for(let d of prediction)
-     {
-       if(d.label==="nsfw")
-        nsfw=d;
-       else sfw=d;
-     }
-     if(sfw.probability<nsfw.probability){
+  // this.makeRequest(files[0] , function (err, datums) {
+  //         if (err) { throw err; }
+  //    console.log("success  "+JSON.stringify(datums) );
+  //    let  prediction=datums.result[0].prediction;
+  //    let nsfw;
+  //    let sfw ;
+  //    for(let d of prediction)
+  //    {
+  //      if(d.label==="nsfw")
+  //       nsfw=d;
+  //      else sfw=d;
+  //    }
+  //    if(sfw.probability<nsfw.probability){
 
-         alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
-     }else{
-       alert("cette image n'est pas sensible vous pouvez la poster")
-     }
+  //        alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
+  //    }else{
+  //      alert("cette image n'est pas sensible vous pouvez la poster")
+  //    }
 
 
-  });
+  // });
 
 
 
@@ -87,19 +87,20 @@ export class ListPostComponent implements OnInit {
      alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
  }else{
    alert("cette image n'est pas sensible place au submit")
+   let formData=new FormData() ;
+   formData.append('file',this.imgToSend,this.imgToSend.name);
+   this._post_service.addPost(formData)
+         .subscribe(data=>{
+           console.log("success");
+         },error=>{
+           console.log(error);
+         })
  }
 
 
 });
 
-     let formData=new FormData() ;
-     formData.append('file',this.imgToSend,this.imgToSend.name);
-     this._post_service.addPost(formData)
-           .subscribe(data=>{
-             console.log("success");
-           },error=>{
-             console.log(error);
-           })
+
 
 
   }
