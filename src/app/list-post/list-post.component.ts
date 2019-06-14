@@ -72,7 +72,7 @@ export class ListPostComponent implements OnInit {
 
      let formData=new FormData() ;
      formData.append('image',this.imgToSend,this.imgToSend.name);
-     this._post_service.addPost(formData)
+     this._post_service.addPost(this.imgToSend)
            .subscribe(data=>{
              console.log("success");
            },error=>{
