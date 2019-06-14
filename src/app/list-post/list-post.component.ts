@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ListPostComponent implements OnInit {
   public imagePath;
   imgUrl:any;
-  email: String ;
+  email:any ;
   imgToSend: any = null;
   loading: Boolean = false ;
   isNsfw: Boolean = false;
@@ -36,8 +36,10 @@ export class ListPostComponent implements OnInit {
 
 
   readEmailParameter(){
-   this.email = this._route.snapshot.paramMap.get('user').split(";")[0] ;
-   console.log(this.email);
+   this._route.queryParamMap.subscribe(params=>{
+        this.email=params.get('user').split(";")[0];
+   })
+
   }
 
 
@@ -105,7 +107,7 @@ if(this.imgToSend!=null){
    formData.append('file',this.imgToSend,this.imgToSend.name);
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
-   formData.append('email',this.pictureForm.value.description);
+   formData.append('email',this.email);
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
@@ -122,6 +124,7 @@ return ;
    formData.append('file',null);
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
+   formData.append('email', this.email) ;
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");

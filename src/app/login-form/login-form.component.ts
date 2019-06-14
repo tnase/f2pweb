@@ -40,7 +40,7 @@ export class LoginFormComponent implements OnInit {
               this.isLogin=true;
               this.email= "" ;
               this.password="";
-              this.router.navigate(['/list-post'], { queryParams: { user: user } });
+              this.router.navigate(['/list-post'], { queryParams: {user: user } });
               return  ;
            }
            alert("username or password is incorrect!!")
