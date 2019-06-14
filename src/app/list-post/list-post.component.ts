@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PostService } from './../service/post.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ListPostComponent implements OnInit {
   pictureForm=new FormGroup({
     picture:new FormControl()
   })
-  constructor() { }
+  constructor(private _post_service : PostService) { }
 
   ngOnInit() {
 
@@ -29,7 +30,7 @@ export class ListPostComponent implements OnInit {
 
 
 
-  onFieldSelected(files,target){
+  onFieldSelected(files){
      if (files.length === 0)
        return;
     var reader = new FileReader();
@@ -38,7 +39,6 @@ export class ListPostComponent implements OnInit {
     reader.onload = (_event) => {
     this.imgUrl = reader.result;
     this.loading=true;
-    console.log(target)
     this.imgToSend=files[0];
     }
 
@@ -69,7 +69,17 @@ export class ListPostComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.imgToSend)
+
+     let formData=new FormData() ;
+     formData.append('image',this.imgToSend,this.imgToSend.name);
+     this._post_service.addPost(formData)
+           .subscribe(data=>{
+             console.log("success");
+           },error=>{
+             console.log(error);
+           })
+
+
   }
 
 

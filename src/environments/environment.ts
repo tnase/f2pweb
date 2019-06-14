@@ -18,5 +18,6 @@ const url = 'http://192.168.8.102:7090/print/f2p/api/v1/';
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
 export const API ={
   SAVE_USER : `${url}user/save` ,
-  LOGIN_USER : `${url}user/login`
+  LOGIN_USER : `${url}user/login`,
+  ADD_POST : `${url}post/add`
 }
