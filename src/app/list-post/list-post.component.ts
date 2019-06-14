@@ -104,7 +104,7 @@ if(this.imgToSend!=null){
  }else{
    alert("cette image n'est pas sensible place au submit")
    let formData=new FormData() ;
-   console.log(this.pictureForm.value);
+   console.log(this.email);
    formData.append('file',this.imgToSend,this.imgToSend.name);
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
@@ -121,12 +121,13 @@ if(this.imgToSend!=null){
 });
 return ;
  }  else{
-   alert("dans le truc ....")
+   alert("dans le truc sans image ....")
    console.log(this.pictureForm.value) ;
     let formData=new FormData() ;
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
    formData.append('email', this.email) ;
+   console.log(formData.getAll('title')) ;
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
