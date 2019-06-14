@@ -37,7 +37,7 @@ export class ListPostComponent implements OnInit {
 
   readEmailParameter(){
    this._route.queryParamMap.subscribe(params=>{
-        this.email=params.get('user').split(";")[0];
+        this.email = params.get('user').split(";")[0];
    })
 
   }
@@ -84,7 +84,7 @@ export class ListPostComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.pictureForm.value.title);
+    console.log(this.pictureForm.value);
 if(this.imgToSend!=null){
     this.makeRequest(this.imgToSend , function (err, datums) {
       if (err) { throw err; }
@@ -104,6 +104,7 @@ if(this.imgToSend!=null){
  }else{
    alert("cette image n'est pas sensible place au submit")
    let formData=new FormData() ;
+   console.log(this.pictureForm.value);
    formData.append('file',this.imgToSend,this.imgToSend.name);
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
@@ -120,8 +121,9 @@ if(this.imgToSend!=null){
 });
 return ;
  }  else{
-  let formData=new FormData() ;
-   formData.append('file',null);
+   alert("dans le truc ....")
+   console.log(this.pictureForm.value) ;
+    let formData=new FormData() ;
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
    formData.append('email', this.email) ;
