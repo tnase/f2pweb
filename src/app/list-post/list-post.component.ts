@@ -29,7 +29,7 @@ export class ListPostComponent implements OnInit {
 
 
 
-  onFieldSelected(files){
+  onFieldSelected(files,target){
      if (files.length === 0)
        return;
     var reader = new FileReader();
@@ -38,6 +38,7 @@ export class ListPostComponent implements OnInit {
     reader.onload = (_event) => {
     this.imgUrl = reader.result;
     this.loading=true;
+    console.log(target)
     this.imgToSend=files[0];
     }
 
@@ -68,7 +69,7 @@ export class ListPostComponent implements OnInit {
   }
 
   onSubmit(){
-  console.log("image for send"+this.imgToSend);
+    console.log(this.imgToSend)
   }
 
 
