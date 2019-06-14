@@ -10,7 +10,7 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   addPost(post){
-      return this.http.post(API.ADD_POST+`?file=${post}`, {});
+      return this.http.post(API.ADD_POST,post);
   }
 
 }
