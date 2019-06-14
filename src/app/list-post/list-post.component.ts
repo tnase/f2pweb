@@ -127,7 +127,7 @@ return ;
    formData.append('title',this.pictureForm.value.title);
    formData.append('description',this.pictureForm.value.description);
    formData.append('email', this.email) ;
-   console.log(formData.getAll('title')) ;
+   console.log("avant le submit") ;
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
