@@ -86,6 +86,12 @@ export class ListPostComponent implements OnInit {
   onSubmit(){
     console.log(this.pictureForm.value);
 if(this.imgToSend!=null){
+  let formData=new FormData() ;
+  console.log(this.email);
+  formData.append('file',this.imgToSend,this.imgToSend.name);
+  formData.append('title',this.pictureForm.value.title);
+  formData.append('description',this.pictureForm.value.description);
+  formData.append('email',this.email);
     this.makeRequest(this.imgToSend , function (err, datums) {
       if (err) { throw err; }
     console.log("success  "+JSON.stringify(datums) );
@@ -103,12 +109,6 @@ if(this.imgToSend!=null){
      alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
  }else{
    alert("cette image n'est pas sensible place au submit")
-   let formData=new FormData() ;
-   console.log(this.email);
-   formData.append('file',this.imgToSend,this.imgToSend.name);
-   formData.append('title',this.pictureForm.value.title);
-   formData.append('description',this.pictureForm.value.description);
-   formData.append('email',this.email);
    this._post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
