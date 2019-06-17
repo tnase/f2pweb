@@ -9,7 +9,7 @@ import { PostService } from './../service/post.service';
 })
 export class PostsComponent implements OnInit {
   email:any ;
-  post:any;
+  posts:any;
   constructor(private _route : ActivatedRoute,private _post_service :PostService) {
     this.readEmailParameter();
     this.getPostByUser();
@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
    getPostByUser(){
      this._post_service.getPostByUser(this.email)
                        .subscribe(data=>{
-                         this.post=data ;
+                         this.posts = data;
                           console.log(JSON.stringify(data));
                        },error=>{
                              console.log(error);
