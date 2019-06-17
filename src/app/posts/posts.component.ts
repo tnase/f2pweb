@@ -34,6 +34,16 @@ export class PostsComponent implements OnInit {
                        })
    }
 
+   readImage(fileName){
+      this._post_service.getImage(fileName)
+           .subscribe(data=>{
+             console.log(data);
+           },error =>{
+             console.log(error)
+           })
+      return true ;
+   }
+
 
 
 }

@@ -2,4 +2,10 @@
   posts works!
 </p>
 
-<img src="C:\Users\23769\AppData\Local\Temp\tomcat-docbase.2036708624707823194.7090\print237-f2p-dir\photo-1519397154350-533cea5b8bff.jpg" />
+<div *ngFor="let post of posts" >
+  <h3>{{post.title}}</h3>
+  <p>{{post.description}}</p>
+ <img  src="image" title="pas d'image a recuperer " *ngIf="post.file&&readImage(post.file.name)"  />
+
+
+</div>

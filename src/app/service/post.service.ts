@@ -17,5 +17,9 @@ export class PostService {
     return this.http.get(API.GET_USER_POST+"?email="+email);
   }
 
+  getImage(fileName){
+    return this.http.get(API.GET_IMAGE+"?fileName="+fileName);
+  }
+
 
 }

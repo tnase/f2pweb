@@ -20,5 +20,7 @@ export const API ={
   SAVE_USER : `${url}user/save` ,
   LOGIN_USER : `${url}user/login`,
   ADD_POST : `${url}post/add`,
-  GET_USER_POST:`${url}post/postByUser`
+  GET_USER_POST:`${url}post/postByUser`,
+  GET_IMAGE:`${url}post/getImage`
+
 }
