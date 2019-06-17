@@ -87,6 +87,7 @@ export class ListPostComponent implements OnInit {
     console.log(this.pictureForm.value);
 if(this.imgToSend!=null){
   let formData=new FormData() ;
+  let post_service=this._post_service;
   console.log(this.email);
   formData.append('file',this.imgToSend,this.imgToSend.name);
   formData.append('title',this.pictureForm.value.title);
@@ -109,7 +110,7 @@ if(this.imgToSend!=null){
      alert("image sensible vous ne pouvez pas la poster dans notre plateforme ")
  }else{
    alert("cette image n'est pas sensible place au submit")
-   this._post_service.addPost(formData)
+   post_service.addPost(formData)
          .subscribe(data=>{
            console.log("success");
          },error=>{
