@@ -13,4 +13,9 @@ export class PostService {
       return this.http.post(API.ADD_POST, post);
   }
 
+  getPostByUser(email){
+    return this.http.get(API.GET_USER_POST+"?email="+email);
+  }
+
+
 }
