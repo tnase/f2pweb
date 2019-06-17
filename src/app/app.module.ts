@@ -11,6 +11,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { from } from 'rxjs';
 import { ListPostComponent } from './list-post/list-post.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CreateAccountComponent } from './create-account/create-account.componen
     UserComponent,
     LoginFormComponent,
     ListPostComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    PostsComponent
   ],
   imports: [
     AlertModule.forRoot(),

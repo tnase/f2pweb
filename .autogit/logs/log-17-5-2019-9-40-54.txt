@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Mon Jun 17 2019 09:40:54 GMT+0100 (Afr. centrale Ouest)
+------------------------------------------------------
+
+Modified files:
+* src/app/list-post/list-post.component.ts
+
+
+Created files:
+* .autogit/logs/log-17-5-2019-9-10-46.txt
+
+
+Deleted files:
+
+
+Renamed files:
