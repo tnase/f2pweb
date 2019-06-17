@@ -19,5 +19,6 @@ const url = 'http://localhost:7090/print/f2p/api/v1/';
 export const API ={
   SAVE_USER : `${url}user/save` ,
   LOGIN_USER : `${url}user/login`,
-  ADD_POST : `${url}post/add`
+  ADD_POST : `${url}post/add`,
+  GET_USER_POST:`${url}post/postByUser`
 }

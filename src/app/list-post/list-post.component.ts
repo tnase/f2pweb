@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PostService } from './../service/post.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class ListPostComponent implements OnInit {
     picture: new FormControl(),
 
   })
-  constructor(private _post_service : PostService, private _route : ActivatedRoute) {
+  constructor(private _post_service : PostService, private _route : ActivatedRoute,public router:Router) {
     this.readEmailParameter();
   }
 
@@ -131,6 +131,7 @@ return ;
    console.log("avant le submit") ;
    this._post_service.addPost(formData)
          .subscribe(data=>{
+          this.router.navigate(['/posts'], { queryParams: {email: this.email } });
            console.log("success");
          },error=>{
            console.log(error);
