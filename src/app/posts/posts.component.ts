@@ -30,18 +30,20 @@ export class PostsComponent implements OnInit {
                          this.posts = data;
                           console.log(JSON.stringify(data));
                        },error=>{
-                             console.log(error);
+                            console.log(error);
                        })
    }
 
    readImage(fileName){
       this._post_service.getImage(fileName)
            .subscribe(data=>{
-             console.log(data);
+             alert(data);
+             return true ;
            },error =>{
-             console.log(error)
+             alert(error)
+             return false ;
            })
-      return true ;
+
    }
 
 
