@@ -37,10 +37,10 @@ export class PostsComponent implements OnInit {
    readImage(fileName){
       this._post_service.getImage(fileName)
            .subscribe(data=>{
-             alert(data);
+             alert(JSON.stringify(data));
              return true ;
            },error =>{
-             alert(error)
+             alert(JSON.stringify(error))
              return false ;
            })
 
