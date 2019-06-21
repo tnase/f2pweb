@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
 
 setUri(){
   this.uri="/print237-f2p-dir/Capture1.PNG"
-  console.log(this.uri)
+  console.log(this.uri);
 }
 
 

@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Fri Jun 21 2019 12:45:42 GMT+0100 (Afr. centrale Ouest)
+------------------------------------------------------
+
+Modified files:
+* src/app/login-form/login-form.component.html
+
+
+Created files:
+* .autogit/logs/log-21-5-2019-12-4-6.txt
+
+
+Deleted files:
+
+
+Renamed files:
