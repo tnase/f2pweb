@@ -15,20 +15,26 @@ export class LoginFormComponent implements OnInit {
   email:String = "";
   password :String="";
   isLogin:Boolean =false;
+  uri:any ;
 
   loginForm= new FormGroup({
     email: new FormControl(),
     password: new FormControl()
   });
 
-  constructor(public userService:UserServiceService,public router:Router) { }
+  constructor(public userService:UserServiceService,public router:Router) {
+    this.setUri();
+   }
 
   ngOnInit() {
   }
 
 
 
-
+setUri(){
+  this.uri="/print237-f2p-dir/Capture1.PNG"
+  console.log(this.uri)
+}
 
 
   login(){
