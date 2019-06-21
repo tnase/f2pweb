@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Fri Jun 21 2019 14:46:04 GMT+0100 (Afr. centrale Ouest)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-21-5-2019-14-15-58.txt
+
+
+Deleted files:
+
+
+Renamed files:
